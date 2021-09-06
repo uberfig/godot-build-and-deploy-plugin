@@ -6,12 +6,8 @@ var persistant_dict: Dictionary = {}
 
 
 func _ready():
-	check_for_persistant()
-
-
-func _on_Button_pressed():
-	$VBoxContainer/Label.text = str("output")
-	butler_login()
+#	check_for_persistant()
+	pass
 
 
 func butler_login(async_mode:= false):
@@ -32,36 +28,38 @@ func butler_push(directory: String, user: String, game: String, channel: String,
 
 
 
-func check_for_persistant():
-	
-	var file2check = File.new()
-	var does_file_exist = file2check.file_exists("res://addons/build-and-deploy/persistant.json")
-	
-	if does_file_exist == true:
-		print("loading persistant settings")
-	
-	else:
-		print("no persistant file found")
-		print("creating persistant file")
-		var persistant = File.new()
-		persistant.open("res://addons/build-and-deploy/persistant.json", File.WRITE)
-		
-		
-		
-		persistant.close()
+#func check_for_persistant():
+#
+#	var file2check = File.new()
+#	var does_file_exist = file2check.file_exists("res://addons/build-and-deploy/persistant.json")
+#
+#	if does_file_exist == true:
+#		print("loading persistant settings")
+#
+#	else:
+#		print("no persistant file found")
+#		print("creating persistant file")
+#		var persistant = File.new()
+#		persistant.open("res://addons/build-and-deploy/persistant.json", File.WRITE)
+#
+#
+#
+#		persistant.close()
+#
+#
+#func fresh_persistant():
+#	var blank_persistant_dict: Dictionary = {
+#		"is logged in": false,
+#		"directory": "",
+#		"user": "",
+#		"game": "",
+#		"channels": [],
+#		"async mode": false
+#	}
+#	return persistant_dict
 
 
-func fresh_persistant():
-	var blank_persistant_dict: Dictionary = {
-		"is logged in": false,
-		"directory": "",
-		"user": "",
-		"game": "",
-		"channels": [],
-		"async mode": false
-	}
-	return persistant_dict
 
 
-func get_export_directory():
-	pass
+func _on_Login_pressed():
+	butler_login()
