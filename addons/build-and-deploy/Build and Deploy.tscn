@@ -10,20 +10,110 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Login" type="Button" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Button" parent="ScrollContainer/VBoxContainer"]
 margin_right = 1024.0
 margin_bottom = 20.0
+text = "Login to Butler"
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer"]
 margin_top = 24.0
 margin_right = 1024.0
 margin_bottom = 38.0
 
-[connection signal="pressed" from="VBoxContainer/Login" to="." method="_on_Login_pressed"]
+[node name="User" type="LineEdit" parent="ScrollContainer/VBoxContainer"]
+margin_top = 42.0
+margin_right = 1024.0
+margin_bottom = 66.0
+placeholder_text = "Itch Username"
+
+[node name="Game" type="LineEdit" parent="ScrollContainer/VBoxContainer"]
+margin_top = 70.0
+margin_right = 1024.0
+margin_bottom = 94.0
+placeholder_text = "Itch Game"
+
+[node name="Directory" type="LineEdit" parent="ScrollContainer/VBoxContainer"]
+margin_top = 98.0
+margin_right = 1024.0
+margin_bottom = 122.0
+placeholder_text = "Path To Build Folder"
+
+[node name="ChannelsLabel" type="Label" parent="ScrollContainer/VBoxContainer"]
+margin_top = 126.0
+margin_right = 1024.0
+margin_bottom = 140.0
+text = "Select which channels you would like to push to"
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 144.0
+margin_right = 1024.0
+margin_bottom = 168.0
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 86.0
+margin_bottom = 19.0
+text = "Windows"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 172.0
+margin_right = 1024.0
+margin_bottom = 196.0
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 62.0
+margin_bottom = 19.0
+text = "Linux"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="ScrollContainer/VBoxContainer"]
+margin_top = 200.0
+margin_right = 1024.0
+margin_bottom = 224.0
+
+[node name="CheckBox" type="CheckBox" parent="ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_right = 24.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="ScrollContainer/VBoxContainer/HBoxContainer3"]
+margin_left = 28.0
+margin_top = 5.0
+margin_right = 54.0
+margin_bottom = 19.0
+text = "Mac"
+
+[node name="PushButton" type="Button" parent="ScrollContainer/VBoxContainer"]
+margin_top = 228.0
+margin_right = 1024.0
+margin_bottom = 248.0
+text = "Push to Itch"
+
+[connection signal="pressed" from="ScrollContainer/VBoxContainer/Login" to="." method="_on_Login_pressed"]
