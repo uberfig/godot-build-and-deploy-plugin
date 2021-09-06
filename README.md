@@ -1,2 +1,2 @@
 # godot-build-and-deploy-plugin
-A basic editor plugin to speed up building projects for multiple platforms and deploying them to itch (and possibly other platforms in the future)
+thus project is not finished yet. when this plugin is ready for use I will update the readme
