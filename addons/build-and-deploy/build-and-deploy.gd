@@ -12,7 +12,7 @@ func _enter_tree():
 	dock = preload("res://addons/build-and-deploy/Build and Deploy.tscn").instance()
 
 	# Add the loaded scene to the docks.
-	add_control_to_dock(DOCK_SLOT_LEFT_UL, dock)
+	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
 	# Note that LEFT_UL means the left of the editor, upper-left dock.
 
 
