@@ -2,7 +2,18 @@ tool
 extends Control
 
 
-var persistant_dict: Dictionary = {}
+var persistant_dict: Dictionary = {
+	"is logged in": false,
+	"directory": "",
+	"user": "",
+	"game": "",
+	"channels": {
+		"Windows": false,
+		"Linux": false,
+		"Mac": false
+	},
+	"async mode": false
+}
 
 
 func _ready():
@@ -27,39 +38,25 @@ func butler_push(directory: String, user: String, game: String, channel: String,
 	OS.execute("butler", args, async_mode, output)
 
 
-
-#func check_for_persistant():
-#
-#	var file2check = File.new()
-#	var does_file_exist = file2check.file_exists("res://addons/build-and-deploy/persistant.json")
-#
-#	if does_file_exist == true:
-#		print("loading persistant settings")
-#
-#	else:
-#		print("no persistant file found")
-#		print("creating persistant file")
-#		var persistant = File.new()
-#		persistant.open("res://addons/build-and-deploy/persistant.json", File.WRITE)
-#
-#
-#
-#		persistant.close()
-#
-#
-#func fresh_persistant():
-#	var blank_persistant_dict: Dictionary = {
-#		"is logged in": false,
-#		"directory": "",
-#		"user": "",
-#		"game": "",
-#		"channels": [],
-#		"async mode": false
-#	}
-#	return persistant_dict
-
-
-
-
 func _on_Login_pressed():
 	butler_login()
+
+
+func _on_SelectDir_pressed():
+	$FileDialog.popup()
+
+
+func _on_FileDialog_dir_selected(dir):
+	print("Selected: ", dir)
+	$VBoxContainer/BuildDir.text = dir
+
+
+func _on_ItchPush_pressed():
+	persistant_dict["directory"] = $VBoxContainer/BuildDir.text
+	persistant_dict["user"] = $VBoxContainer/User.text
+	persistant_dict["game"] = $VBoxContainer/Game.text
+	persistant_dict["channels"]["Windows"] = $VBoxContainer/Windows/CheckBox.is_pressed()
+	persistant_dict["channels"]["Linux"] = $VBoxContainer/Linux/CheckBox.is_pressed()
+	persistant_dict["channels"]["Mac"] = $VBoxContainer/Mac/CheckBox.is_pressed()
+	persistant_dict["async mode"] = $VBoxContainer/Async/CheckBox.is_pressed()
+	print(persistant_dict)
