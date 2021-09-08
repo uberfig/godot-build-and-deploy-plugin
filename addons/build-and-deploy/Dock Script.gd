@@ -2,7 +2,7 @@ tool
 extends Control
 
 
-var persistant_dict: Dictionary = {
+var presets_dict: Dictionary = {
 	"is logged in": false,
 	"directory": "",
 	"user": "",
@@ -62,40 +62,40 @@ func _on_FileDialog_dir_selected(dir):
 
 
 func _on_ItchPush_pressed():
-	persistant_dict["directory"] = $VBoxContainer/BuildDir.text
-	persistant_dict["user"] = $VBoxContainer/User.text
-	persistant_dict["game"] = $VBoxContainer/Game.text
-	persistant_dict["channels"]["Windows"] = $VBoxContainer/Windows.is_pressed()
-	persistant_dict["channels"]["Linux"] = $VBoxContainer/Linux.is_pressed()
-	persistant_dict["channels"]["Mac"] = $VBoxContainer/Mac.is_pressed()
-	persistant_dict["async mode"] = $VBoxContainer/Async.is_pressed()
-	print("started deploy with presets: ", persistant_dict)
+	presets_dict["directory"] = $VBoxContainer/BuildDir.text
+	presets_dict["user"] = $VBoxContainer/User.text
+	presets_dict["game"] = $VBoxContainer/Game.text
+	presets_dict["channels"]["Windows"] = $VBoxContainer/Windows.is_pressed()
+	presets_dict["channels"]["Linux"] = $VBoxContainer/Linux.is_pressed()
+	presets_dict["channels"]["Mac"] = $VBoxContainer/Mac.is_pressed()
+	presets_dict["async mode"] = $VBoxContainer/Async.is_pressed()
+	print("started deploy with presets: ", presets_dict)
 	
-	if persistant_dict["channels"]["Windows"] == true:
+	if presets_dict["channels"]["Windows"] == true:
 		butler_push(
-			persistant_dict["directory"], 
-			persistant_dict["user"], 
-			persistant_dict["game"], 
+			presets_dict["directory"], 
+			presets_dict["user"], 
+			presets_dict["game"], 
 			"windows",
-			persistant_dict["async mode"]
+			presets_dict["async mode"]
 		)
 	
-	if persistant_dict["channels"]["Linux"] == true:
+	if presets_dict["channels"]["Linux"] == true:
 		butler_push(
-			persistant_dict["directory"], 
-			persistant_dict["user"], 
-			persistant_dict["game"], 
+			presets_dict["directory"], 
+			presets_dict["user"], 
+			presets_dict["game"], 
 			"linux-universal",
-			persistant_dict["async mode"]
+			presets_dict["async mode"]
 		)
 	
-	if persistant_dict["channels"]["Mac"] == true:
+	if presets_dict["channels"]["Mac"] == true:
 		butler_push(
-			persistant_dict["directory"], 
-			persistant_dict["user"], 
-			persistant_dict["game"], 
+			presets_dict["directory"], 
+			presets_dict["user"], 
+			presets_dict["game"], 
 			"osx-universal",
-			persistant_dict["async mode"]
+			presets_dict["async mode"]
 		)
 
 
