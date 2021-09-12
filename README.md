@@ -1,5 +1,10 @@
 # godot-build-and-deploy-plugin
-to use this plugin you will need to create a file to contain your builds and create files in it like shown: 
+
+### setup
+
+just place the build-and-deploy file into your addons folder and enaable the plugin
+
+to use this plugin you will need to create a new file to contain your builds and create files in it like shown: 
 <p>
   <img src="assets/directory example.png">
 </p>
