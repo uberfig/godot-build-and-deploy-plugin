@@ -1,2 +1,2 @@
 # godot-build-and-deploy-plugin
-thus project is not finished yet. when this plugin is ready for use I will update the readme
+to use this plugin you will need to create a file to contain your builds and create files in it like shown: [example](assets/directory example.png)
