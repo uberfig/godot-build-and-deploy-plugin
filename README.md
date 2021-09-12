@@ -2,7 +2,7 @@
 
 ### setup
 
-just place the build-and-deploy file into your addons folder and enaable the plugin
+just place the build-and-deploy file into your addons folder and enable the plugin
 
 you will need butler installed (and added to path if on windows)
 
