@@ -42,4 +42,42 @@ func update_presets():
 	print("build presets updated with: ", build_presets)
 
 
+func build_prject(game: String, channel: String, async_mode:= false):
+	var output = []
+	var array = ["--export", str(channel), str(game)]
+	var args = PoolStringArray(array)
+	OS.execute(OS.get_executable_path(), args, async_mode, output)
+
+
+
+func _on_Build_pressed():
+	update_presets()
+	if build_presets["channels"]["Windows"] == true:
+		build_prject(
+			build_presets["game"], 
+			"Windows Desktop",
+			build_presets["async mode"]
+		)
+	
+	if build_presets["channels"]["Linux"] == true:
+		build_prject(
+			build_presets["game"], 
+			"Linux/X11",
+			build_presets["async mode"]
+		)
+	
+	if build_presets["channels"]["Mac"] == true:
+		build_prject( 
+			build_presets["game"], 
+			"Mac OSX",
+			build_presets["async mode"]
+		)
+	
+	if build_presets["channels"]["HTML5"] == true:
+		build_prject(
+			build_presets["game"], 
+			"HTML5",
+			build_presets["async mode"]
+		)
+
 

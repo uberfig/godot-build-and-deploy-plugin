@@ -29,70 +29,90 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Game" type="LineEdit" parent="Build/VBoxContainer"]
-margin_right = 1016.0
-margin_bottom = 24.0
-placeholder_text = "Itch Game"
-
-[node name="SelectDir" type="Button" parent="Build/VBoxContainer"]
-margin_top = 28.0
-margin_right = 1016.0
-margin_bottom = 48.0
-text = "Click to select a directory"
-align = 0
-
-[node name="BuildDir" type="LineEdit" parent="Build/VBoxContainer"]
-margin_top = 52.0
-margin_right = 1016.0
-margin_bottom = 76.0
-placeholder_text = "Path To Build Folder"
-
 [node name="ChannelsLabel" type="Label" parent="Build/VBoxContainer"]
-margin_top = 80.0
 margin_right = 1016.0
-margin_bottom = 94.0
-text = "Select which platforms you would like to build for"
+margin_bottom = 14.0
+text = "Select which platforms you would like to build for, and fill in your project's name"
 autowrap = true
 
-[node name="Windows" type="CheckBox" parent="Build/VBoxContainer"]
-margin_top = 98.0
+[node name="Label" type="Label" parent="Build/VBoxContainer"]
+margin_top = 18.0
 margin_right = 1016.0
-margin_bottom = 122.0
+margin_bottom = 32.0
+text = "Please Note: you will need to configure the EDITOR's export presets in the EDITOR's export menu"
+autowrap = true
+
+[node name="Game" type="LineEdit" parent="Build/VBoxContainer"]
+margin_top = 36.0
+margin_right = 1016.0
+margin_bottom = 60.0
+hint_tooltip = "If you already have the name of your game set in the export menu you can skip this step"
+placeholder_text = "Game Name"
+
+[node name="Windows" type="CheckBox" parent="Build/VBoxContainer"]
+margin_top = 64.0
+margin_right = 1016.0
+margin_bottom = 88.0
 text = "Windows"
 
 [node name="Linux" type="CheckBox" parent="Build/VBoxContainer"]
-margin_top = 126.0
+margin_top = 92.0
 margin_right = 1016.0
-margin_bottom = 150.0
+margin_bottom = 116.0
 text = "Linux"
 
 [node name="Mac" type="CheckBox" parent="Build/VBoxContainer"]
-margin_top = 154.0
+margin_top = 120.0
 margin_right = 1016.0
-margin_bottom = 178.0
+margin_bottom = 144.0
 text = "Mac"
 
 [node name="HTML5" type="CheckBox" parent="Build/VBoxContainer"]
-margin_top = 182.0
+margin_top = 148.0
 margin_right = 1016.0
-margin_bottom = 206.0
+margin_bottom = 172.0
 text = "HTML5"
 
 [node name="Async" type="CheckBox" parent="Build/VBoxContainer"]
-margin_top = 210.0
+margin_top = 176.0
 margin_right = 1016.0
-margin_bottom = 234.0
+margin_bottom = 200.0
 hint_tooltip = "when in pause mode (recommended) the editor will pause it's process until the build is finished (you will not be able to interact with the editor until butler is done)"
 pressed = true
 text = "Pause Mode"
 
 [node name="SavePresets" type="Button" parent="Build/VBoxContainer"]
-margin_top = 238.0
+margin_top = 204.0
 margin_right = 1016.0
-margin_bottom = 258.0
+margin_bottom = 224.0
 hint_tooltip = "save currently selected presets to persistant storage"
 text = "Save Presets"
 align = 0
+
+[node name="Build" type="Button" parent="Build/VBoxContainer"]
+margin_top = 228.0
+margin_right = 1016.0
+margin_bottom = 248.0
+text = "Build"
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SelectDir" type="Button" parent="Build/VBoxContainer"]
+visible = false
+margin_top = 210.0
+margin_right = 1016.0
+margin_bottom = 230.0
+text = "Click to select a directory"
+align = 0
+
+[node name="BuildDir" type="LineEdit" parent="Build/VBoxContainer"]
+visible = false
+margin_top = 210.0
+margin_right = 1016.0
+margin_bottom = 234.0
+placeholder_text = "Path To Build Folder"
 
 [node name="FileDialog" type="FileDialog" parent="Build"]
 margin_right = 315.0
@@ -234,8 +254,9 @@ access = 2
 current_dir = "/Users/aidan/Documents/figroot studios/godot-build-and-deploy-plugin"
 current_path = "/Users/aidan/Documents/figroot studios/godot-build-and-deploy-plugin/"
 
-[connection signal="pressed" from="Build/VBoxContainer/SelectDir" to="Build" method="_on_SelectDir_pressed"]
 [connection signal="pressed" from="Build/VBoxContainer/SavePresets" to="." method="_on_SavePresets_pressed"]
+[connection signal="pressed" from="Build/VBoxContainer/Build" to="Build" method="_on_Build_pressed"]
+[connection signal="pressed" from="Build/VBoxContainer/SelectDir" to="Build" method="_on_SelectDir_pressed"]
 [connection signal="dir_selected" from="Build/FileDialog" to="Build" method="_on_FileDialog_dir_selected"]
 [connection signal="pressed" from="Deploy/VBoxContainer/ButlerAcount/Login" to="Deploy" method="_on_Login_pressed"]
 [connection signal="pressed" from="Deploy/VBoxContainer/ButlerAcount/Logout" to="Deploy" method="_on_Logout_pressed"]

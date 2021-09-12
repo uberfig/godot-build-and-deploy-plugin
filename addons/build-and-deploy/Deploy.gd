@@ -82,7 +82,7 @@ func _on_ItchPush_pressed():
 	
 	if presets_dict["channels"]["Windows"] == true:
 		butler_push(
-			presets_dict["directory"], 
+			str(presets_dict["directory"], "/windows"), 
 			presets_dict["user"], 
 			presets_dict["game"], 
 			"windows",
@@ -91,7 +91,7 @@ func _on_ItchPush_pressed():
 	
 	if presets_dict["channels"]["Linux"] == true:
 		butler_push(
-			presets_dict["directory"], 
+			str(presets_dict["directory"], "/linux"), 
 			presets_dict["user"], 
 			presets_dict["game"], 
 			"linux-universal",
@@ -100,7 +100,7 @@ func _on_ItchPush_pressed():
 	
 	if presets_dict["channels"]["Mac"] == true:
 		butler_push(
-			presets_dict["directory"], 
+			str(presets_dict["directory"], "/mac"), 
 			presets_dict["user"], 
 			presets_dict["game"], 
 			"osx-universal",
@@ -109,7 +109,7 @@ func _on_ItchPush_pressed():
 	
 	if presets_dict["channels"]["HTML5"] == true:
 		butler_push(
-			presets_dict["directory"], 
+			str(presets_dict["directory"], "/html5"), 
 			presets_dict["user"], 
 			presets_dict["game"], 
 			"html5",
