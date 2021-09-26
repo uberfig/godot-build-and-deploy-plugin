@@ -1,5 +1,9 @@
 # godot-build-and-deploy-plugin
 
+### please note:
+
+the build portion of the plugin is redundant as it does the same thing as the export all button that is already part of the engine, and the build menu will be depreciated
+
 ### setup
 
 just place the build-and-deploy file into your addons folder and enable the plugin
