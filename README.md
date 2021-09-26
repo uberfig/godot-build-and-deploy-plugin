@@ -2,7 +2,7 @@
 
 ### please note:
 
-the build portion of the plugin is redundant as it does the same thing as the export all button that is already part of the engine, and the build menu will be depreciated
+the build portion of the plugin is redundant as it does the same thing as the export all button that is already part of the editor, and so the build menu will be depreciated
 
 ### setup
 
