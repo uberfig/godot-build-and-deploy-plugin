@@ -14,6 +14,10 @@ config/name="One Click Deploy Plugin"
 run/main_scene="res://test_scene.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg" )
+
 [physics]
 
 common/enable_pause_aware_picking=true

@@ -42,7 +42,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabBox/About/ScrollContainer"]
 margin_right = 1004.0
-margin_bottom = 1222.0
+margin_bottom = 1189.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -125,9 +125,10 @@ stretch_mode = 5
 [node name="Label5" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
 margin_top = 753.0
 margin_right = 1004.0
-margin_bottom = 852.0
+margin_bottom = 869.0
 text = "now you may actually make use of this plugin!
 Once you have clicked Export All and finished exporting your project you can go to the deploy tab and fill in all of the needed info.
+-click the login to butler button and login into butler (if you haven't already)
 -put your username where it asks for it
 for your game name:
 Don't put you game's name!!!
@@ -135,19 +136,19 @@ instead put your game's link like shown:"
 autowrap = true
 
 [node name="TextureRect5" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
-margin_top = 856.0
+margin_top = 873.0
 margin_right = 1004.0
-margin_bottom = 966.0
-rect_min_size = Vector2( 0, 110 )
+margin_bottom = 933.0
+rect_min_size = Vector2( 0, 60 )
 size_flags_horizontal = 3
 texture = ExtResource( 7 )
 expand = true
 stretch_mode = 5
 
 [node name="Label6" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
-margin_top = 970.0
+margin_top = 937.0
 margin_right = 1004.0
-margin_bottom = 1222.0
+margin_bottom = 1189.0
 text = "in this example I would put:
 virtual-spitfire-exhibit
 *note that I only kept what came after the  itch.io/
