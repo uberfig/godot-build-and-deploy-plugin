@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://addons/build-and-deploy/Old_Build_Menu.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/build-and-deploy/Deploy.gd" type="Script" id=2]
 [ext_resource path="res://addons/build-and-deploy/Dock Script.gd" type="Script" id=3]
 
@@ -13,7 +12,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Build" parent="." instance=ExtResource( 1 )]
+[node name="About" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="About"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="About/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 99.0
+text = "Building is no longer supported as part of this plugin.
+This is because it was unstable and the engine's built in export menu already has the ability to build for all platforms with one click, and it is much more performant.
+If you would like to mess around with the old build menu, it is the file named Old_Build_Menu.tscn 
+have fun :)
+"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Deploy" type="Control" parent="."]
 visible = false
