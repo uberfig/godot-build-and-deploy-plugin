@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://addons/build-and-deploy/directory example.png" type="Texture" id=1]
 [ext_resource path="res://addons/build-and-deploy/Deploy.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://addons/build-and-deploy/Presets Example.png" type="Texture" id=5]
 [ext_resource path="res://addons/build-and-deploy/export all example.png" type="Texture" id=6]
 [ext_resource path="res://addons/build-and-deploy/Game Name Example.png" type="Texture" id=7]
+[ext_resource path="res://addons/build-and-deploy/QuickDeploy.gd" type="Script" id=8]
 
 [node name="ItchDeploy" type="Control"]
 anchor_right = 1.0
@@ -287,7 +288,135 @@ margin_bottom = 358.0
 text = "Push to Itch"
 align = 0
 
+[node name="QuickDeploy" type="Control" parent="TabBox"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBox/QuickDeploy"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabBox/QuickDeploy/ScrollContainer"]
+margin_right = 1016.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AboutQuickDP" type="Label" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 31.0
+text = "This menu will let you manually select any folder of your choice and deploy it to Itch under any channel
+This is intended for power users of this plugin and to make deploying this plugin to Itch easier for me-[@uberfig] ;)"
+autowrap = true
+
+[node name="Login" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 1016.0
+margin_bottom = 55.0
+text = "Login to Butler"
+align = 0
+
+[node name="Logout" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 59.0
+margin_right = 1016.0
+margin_bottom = 79.0
+text = "Logout From Butler"
+align = 0
+
+[node name="User" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 83.0
+margin_right = 1016.0
+margin_bottom = 107.0
+placeholder_text = "Itch Username"
+
+[node name="Game" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 111.0
+margin_right = 1016.0
+margin_bottom = 135.0
+placeholder_text = "Itch Game"
+
+[node name="QuickSelectDir" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 139.0
+margin_right = 1016.0
+margin_bottom = 159.0
+text = "Click to select a directory"
+align = 0
+
+[node name="BuildDir" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 163.0
+margin_right = 1016.0
+margin_bottom = 187.0
+placeholder_text = "Path To Folder"
+
+[node name="ChannelsLabel" type="Label" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 191.0
+margin_right = 1016.0
+margin_bottom = 205.0
+text = "fill in what channel you would like to build to:"
+autowrap = true
+
+[node name="Channel" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 209.0
+margin_right = 1016.0
+margin_bottom = 233.0
+placeholder_text = "Channel"
+
+[node name="Async" type="CheckBox" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 237.0
+margin_right = 1016.0
+margin_bottom = 261.0
+hint_tooltip = "when in pause mode (recommended) the editor will pause it's process until butler is finished (you will not be able to interact with the editor until butler is done)"
+pressed = true
+text = "Pause Mode"
+
+[node name="SavePresets" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 265.0
+margin_right = 1016.0
+margin_bottom = 285.0
+hint_tooltip = "save currently selected presets to persistant storage"
+text = "Save Presets"
+align = 0
+
+[node name="ItchPush" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 289.0
+margin_right = 1016.0
+margin_bottom = 309.0
+text = "Push to Itch"
+align = 0
+
 [node name="FileDialog" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -491.0
+margin_bottom = -436.5
+rect_min_size = Vector2( 250, 87.5 )
+window_title = "Open a Directory"
+resizable = true
+dialog_text = "Select a Directory to Deploy From (use the same Directory you are building into)"
+mode = 2
+access = 2
+current_dir = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin"
+current_path = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin/"
+
+[node name="QuickFile" type="FileDialog" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -308,4 +437,10 @@ current_path = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-buil
 [connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/SelectDir" to="." method="_on_SelectDir_pressed"]
 [connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/SavePresets" to="." method="_on_SavePresets_pressed"]
 [connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/ItchPush" to="TabBox/Deploy" method="_on_ItchPush_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Login" to="TabBox/Deploy" method="_on_Login_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Logout" to="TabBox/Deploy" method="_on_Logout_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/QuickSelectDir" to="." method="_on_QuickSelectDir_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/SavePresets" to="." method="_on_SavePresets_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/ItchPush" to="TabBox/QuickDeploy" method="_on_ItchPush_pressed"]
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="dir_selected" from="QuickFile" to="." method="_on_QuickFile_dir_selected"]

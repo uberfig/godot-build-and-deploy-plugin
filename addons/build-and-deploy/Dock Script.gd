@@ -6,7 +6,8 @@ var plugin_persistant_data = "res://addons/build-and-deploy/persistant.save"
 
 
 var persistant_dict = {
-	"Deploy": {}
+	"Deploy": {},
+	"QuickDeploy": {}
 }
 
 
@@ -27,9 +28,11 @@ var persistant_dict = {
 
 func save_build_presets():
 	$TabBox/Deploy.update_presets()
+	$TabBox/QuickDeploy.update_presets()
 #	$Build.update_presets()
 	print("saving deploy presets with: ", $TabBox/Deploy.presets_dict)
 	persistant_dict["Deploy"] = $TabBox/Deploy.presets_dict
+	persistant_dict["QuickDeploy"] = $TabBox/QuickDeploy.presets_dict
 #	persistant_dict["Build"] = $Build.build_presets
 	var file = File.new()
 	file.open(plugin_persistant_data, File.WRITE)
@@ -44,11 +47,13 @@ func load_build_presets():
 		persistant_dict = Dictionary(file.get_var())
 #		$Build.build_presets = persistant_dict["Build"]
 		$TabBox/Deploy.presets_dict = persistant_dict["Deploy"]
+		$TabBox/QuickDeploy.presets_dict = persistant_dict["QuickDeploy"]
 		file.close()
 		update_ui()
 	else:
 #		persistant_dict["Build"] = $Build.build_presets
 		persistant_dict["Deploy"] = $TabBox/Deploy.presets_dict
+		persistant_dict["QuickDeploy"] = $TabBox/QuickDeploy.presets_dict
 		file.open(plugin_persistant_data, File.WRITE)
 		file.store_var(persistant_dict, true)
 		file.close()
@@ -65,6 +70,14 @@ func update_ui():
 	$TabBox/Deploy/ScrollContainer/VBoxContainer/Mac.set_pressed(deploy_presets["channels"]["Mac"])
 	$TabBox/Deploy/ScrollContainer/VBoxContainer/HTML5.set_pressed(deploy_presets["channels"]["HTML5"])
 	$TabBox/Deploy/ScrollContainer/VBoxContainer/Async.set_pressed(deploy_presets["async mode"])
+	
+	var Quickdeploy_presets = $TabBox/QuickDeploy.presets_dict
+	print("updating ui with: ", deploy_presets)
+	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/User.text = Quickdeploy_presets["user"]
+	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Game.text = Quickdeploy_presets["game"]
+	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/BuildDir.text = Quickdeploy_presets["directory"]
+	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Channel.text = Quickdeploy_presets["channel"]
+	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Async.set_pressed(Quickdeploy_presets["async mode"])
 	
 #	var Build_presets = $Build.build_presets
 #	print("updating ui with: ", Build_presets)
@@ -92,3 +105,15 @@ func _on_SelectDir_pressed():
 func _on_FileDialog_dir_selected(dir):
 	print("Selected directory: ", dir)
 	$TabBox/Deploy/ScrollContainer/VBoxContainer/BuildDir.text = dir
+
+
+func _on_QuickSelectDir_pressed():
+	$QuickFile.popup()
+
+
+func _on_QuickFile_dir_selected(dir):
+	print("Selected directory: ", dir)
+	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/BuildDir.text = dir
+
+
+
