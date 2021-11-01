@@ -55,24 +55,15 @@ func _on_Logout_pressed():
 	butler_logout()
 
 
-func _on_SelectDir_pressed():
-	$FileDialog.popup()
-
-
-func _on_FileDialog_dir_selected(dir):
-	print("Selected directory: ", dir)
-	$VBoxContainer/BuildDir.text = dir
-
-
 func update_presets():
-	presets_dict["directory"] = $VBoxContainer/BuildDir.text
-	presets_dict["user"] = $VBoxContainer/User.text
-	presets_dict["game"] = $VBoxContainer/Game.text
-	presets_dict["channels"]["Windows"] = $VBoxContainer/Windows.is_pressed()
-	presets_dict["channels"]["Linux"] = $VBoxContainer/Linux.is_pressed()
-	presets_dict["channels"]["Mac"] = $VBoxContainer/Mac.is_pressed()
-	presets_dict["channels"]["HTML5"] = $VBoxContainer/HTML5.is_pressed()
-	presets_dict["async mode"] = $VBoxContainer/Async.is_pressed()
+	presets_dict["directory"] = $ScrollContainer/VBoxContainer/BuildDir.text
+	presets_dict["user"] = $ScrollContainer/VBoxContainer/User.text
+	presets_dict["game"] = $ScrollContainer/VBoxContainer/Game.text
+	presets_dict["channels"]["Windows"] = $ScrollContainer/VBoxContainer/Windows.is_pressed()
+	presets_dict["channels"]["Linux"] = $ScrollContainer/VBoxContainer/Linux.is_pressed()
+	presets_dict["channels"]["Mac"] = $ScrollContainer/VBoxContainer/Mac.is_pressed()
+	presets_dict["channels"]["HTML5"] = $ScrollContainer/VBoxContainer/HTML5.is_pressed()
+	presets_dict["async mode"] = $ScrollContainer/VBoxContainer/Async.is_pressed()
 	print("presets updated with: ", presets_dict)
 
 
