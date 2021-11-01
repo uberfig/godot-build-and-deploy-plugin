@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://addons/build-and-deploy/directory example.png" type="Texture" id=1]
 [ext_resource path="res://addons/build-and-deploy/Deploy.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://addons/build-and-deploy/Export Example.png" type="Texture" id=4]
 [ext_resource path="res://addons/build-and-deploy/Presets Example.png" type="Texture" id=5]
 [ext_resource path="res://addons/build-and-deploy/export all example.png" type="Texture" id=6]
+[ext_resource path="res://addons/build-and-deploy/Game Name Example.png" type="Texture" id=7]
 
 [node name="ItchDeploy" type="Control"]
 anchor_right = 1.0
@@ -41,7 +42,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabBox/About/ScrollContainer"]
 margin_right = 1004.0
-margin_bottom = 749.0
+margin_bottom = 1222.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -120,6 +121,49 @@ size_flags_horizontal = 3
 texture = ExtResource( 6 )
 expand = true
 stretch_mode = 5
+
+[node name="Label5" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 753.0
+margin_right = 1004.0
+margin_bottom = 852.0
+text = "now you may actually make use of this plugin!
+Once you have clicked Export All and finished exporting your project you can go to the deploy tab and fill in all of the needed info.
+-put your username where it asks for it
+for your game name:
+Don't put you game's name!!!
+instead put your game's link like shown:"
+autowrap = true
+
+[node name="TextureRect5" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 856.0
+margin_right = 1004.0
+margin_bottom = 966.0
+rect_min_size = Vector2( 0, 110 )
+size_flags_horizontal = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="Label6" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 970.0
+margin_right = 1004.0
+margin_bottom = 1222.0
+text = "in this example I would put:
+virtual-spitfire-exhibit
+*note that I only kept what came after the  itch.io/
+
+-now click the path to directory buton and select the folder that you created in the begining (the one that contains windows, linux, mac, html5 if you forgot)
+-select which channels you want to upload to
+-click save presets (optional)
+-click deploy to Itch
+
+now you just need to wait for everything to upload, the editor should freeze until its done (unless you turned off pause mode)
+
+once the editor unfreezes (unless you turned off pause mode) your builds should be live!
+*the first push to Itch will take much longer than patches because the entire engine needs to be uploaded in the first build*
+
+I hope this walkthrough helped!"
+autowrap = true
 
 [node name="Deploy" type="Control" parent="TabBox"]
 visible = false
