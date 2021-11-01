@@ -57,7 +57,7 @@ func _on_ItchPush_pressed():
 	print("started deploy with presets: ", presets_dict)
 	
 	butler_push(
-		str(presets_dict["directory"], "/windows"), 
+		presets_dict["directory"], 
 		presets_dict["user"], 
 		presets_dict["game"], 
 		presets_dict["channel"],
