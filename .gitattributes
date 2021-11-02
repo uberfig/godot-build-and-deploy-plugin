@@ -13,3 +13,6 @@
 /icon.svg           export-ignore
 /test_scene.tscn    export-ignore
 /assets             export-ignore
+/default_env.tres   export-ignore
+/export_presets.cfg export-ignore
+/icon.png.import    export-ignore
