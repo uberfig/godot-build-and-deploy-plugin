@@ -10,9 +10,13 @@ config_version=4
 
 [application]
 
-config/name="One Click Deploy Plugin"
+config/name="old One Click Deploy Plugin"
 run/main_scene="res://test_scene.tscn"
 config/icon="res://icon.png"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/build-and-deploy/plugin.cfg" )
 
 [physics]
 
