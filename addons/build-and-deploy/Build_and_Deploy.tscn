@@ -1,0 +1,446 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://addons/build-and-deploy/directory example.png" type="Texture" id=1]
+[ext_resource path="res://addons/build-and-deploy/Deploy.gd" type="Script" id=2]
+[ext_resource path="res://addons/build-and-deploy/Dock Script.gd" type="Script" id=3]
+[ext_resource path="res://addons/build-and-deploy/Export Example.png" type="Texture" id=4]
+[ext_resource path="res://addons/build-and-deploy/Presets Example.png" type="Texture" id=5]
+[ext_resource path="res://addons/build-and-deploy/export all example.png" type="Texture" id=6]
+[ext_resource path="res://addons/build-and-deploy/Game Name Example.png" type="Texture" id=7]
+[ext_resource path="res://addons/build-and-deploy/QuickDeploy.gd" type="Script" id=8]
+
+[node name="ItchDeploy" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabBox" type="TabContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="About" type="Control" parent="TabBox"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBox/About"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabBox/About/ScrollContainer"]
+margin_right = 1004.0
+margin_bottom = 1189.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_right = 1004.0
+margin_bottom = 150.0
+text = "Building is no longer supported as part of this plugin.
+This is because it was unstable and the engine's built in export menu already has the ability to build for all platforms with one click, and it is much more performant.
+If you would like to mess around with the old build menu, it is the file named Old_Build_Menu.tscn 
+have fun :)
+
+Setup:
+to use the itch deploy you must create an empty file (the name of this file is not important) then fill the file as shown (the names of the these files are important)"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 1004.0
+margin_bottom = 279.0
+texture = ExtResource( 1 )
+
+[node name="Label2" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 283.0
+margin_right = 1004.0
+margin_bottom = 314.0
+text = "Once you have finished creating these folders you can go to the export menu and set up the exports.
+You must put the exports in the proper files (windows in the windows file you made, linux in the linux file etc)"
+autowrap = true
+
+[node name="TextureRect2" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 318.0
+margin_right = 1004.0
+margin_bottom = 468.0
+rect_min_size = Vector2( 0, 150 )
+size_flags_horizontal = 3
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 5
+
+[node name="Label3" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 472.0
+margin_right = 1004.0
+margin_bottom = 486.0
+text = "Once you are done the presets should look like this:"
+autowrap = true
+
+[node name="TextureRect3" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 490.0
+margin_right = 1004.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 0, 110 )
+size_flags_horizontal = 3
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 5
+
+[node name="Label4" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 604.0
+margin_right = 1004.0
+margin_bottom = 635.0
+text = "And you should have the ability to Export All (sometines the button isn't clickable, if that happens just select another preset and it should become selectable)"
+autowrap = true
+
+[node name="TextureRect4" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 639.0
+margin_right = 1004.0
+margin_bottom = 749.0
+rect_min_size = Vector2( 0, 110 )
+size_flags_horizontal = 3
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 5
+
+[node name="Label5" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 753.0
+margin_right = 1004.0
+margin_bottom = 869.0
+text = "now you may actually make use of this plugin!
+Once you have clicked Export All and finished exporting your project you can go to the deploy tab and fill in all of the needed info.
+-click the login to butler button and login into butler (if you haven't already)
+-put your username where it asks for it
+for your game name:
+Don't put you game's name!!!
+instead put your game's link like shown:"
+autowrap = true
+
+[node name="TextureRect5" type="TextureRect" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 873.0
+margin_right = 1004.0
+margin_bottom = 933.0
+rect_min_size = Vector2( 0, 60 )
+size_flags_horizontal = 3
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 5
+
+[node name="Label6" type="Label" parent="TabBox/About/ScrollContainer/VBoxContainer"]
+margin_top = 937.0
+margin_right = 1004.0
+margin_bottom = 1189.0
+text = "in this example I would put:
+virtual-spitfire-exhibit
+*note that I only kept what came after the  itch.io/
+
+-now click the path to directory buton and select the folder that you created in the begining (the one that contains windows, linux, mac, html5 if you forgot)
+-select which channels you want to upload to
+-click save presets (optional)
+-click deploy to Itch
+
+now you just need to wait for everything to upload, the editor should freeze until its done (unless you turned off pause mode)
+
+once the editor unfreezes (unless you turned off pause mode) your builds should be live!
+*the first push to Itch will take much longer than patches because the entire engine needs to be uploaded in the first build*
+
+I hope this walkthrough helped!"
+autowrap = true
+
+[node name="Deploy" type="Control" parent="TabBox"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBox/Deploy"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabBox/Deploy/ScrollContainer"]
+margin_right = 1016.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Login" type="Button" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 20.0
+text = "Login to Butler"
+align = 0
+
+[node name="Logout" type="Button" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 1016.0
+margin_bottom = 44.0
+text = "Logout From Butler"
+align = 0
+
+[node name="User" type="LineEdit" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 1016.0
+margin_bottom = 72.0
+placeholder_text = "Itch Username"
+
+[node name="Game" type="LineEdit" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 76.0
+margin_right = 1016.0
+margin_bottom = 100.0
+placeholder_text = "Itch Game"
+
+[node name="SelectDir" type="Button" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 104.0
+margin_right = 1016.0
+margin_bottom = 124.0
+text = "Click to select a directory"
+align = 0
+
+[node name="BuildDir" type="LineEdit" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 128.0
+margin_right = 1016.0
+margin_bottom = 152.0
+placeholder_text = "Path To Build Folder"
+
+[node name="ChannelsLabel" type="Label" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 156.0
+margin_right = 1016.0
+margin_bottom = 170.0
+text = "Select which channels you would like to push to"
+autowrap = true
+
+[node name="Windows" type="CheckBox" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 174.0
+margin_right = 1016.0
+margin_bottom = 198.0
+text = "Windows"
+
+[node name="Linux" type="CheckBox" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 202.0
+margin_right = 1016.0
+margin_bottom = 226.0
+text = "Linux"
+
+[node name="Mac" type="CheckBox" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 230.0
+margin_right = 1016.0
+margin_bottom = 254.0
+text = "Mac"
+
+[node name="HTML5" type="CheckBox" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 258.0
+margin_right = 1016.0
+margin_bottom = 282.0
+text = "HTML5"
+
+[node name="Async" type="CheckBox" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 286.0
+margin_right = 1016.0
+margin_bottom = 310.0
+hint_tooltip = "when in pause mode (recommended) the editor will pause it's process until butler is finished (you will not be able to interact with the editor until butler is done)"
+pressed = true
+text = "Pause Mode"
+
+[node name="SavePresets" type="Button" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 314.0
+margin_right = 1016.0
+margin_bottom = 334.0
+hint_tooltip = "save currently selected presets to persistant storage"
+text = "Save Presets"
+align = 0
+
+[node name="ItchPush" type="Button" parent="TabBox/Deploy/ScrollContainer/VBoxContainer"]
+margin_top = 338.0
+margin_right = 1016.0
+margin_bottom = 358.0
+text = "Push to Itch"
+align = 0
+
+[node name="QuickDeploy" type="Control" parent="TabBox"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBox/QuickDeploy"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabBox/QuickDeploy/ScrollContainer"]
+margin_right = 1016.0
+margin_bottom = 564.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AboutQuickDP" type="Label" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 31.0
+text = "This menu will let you manually select any folder of your choice and deploy it to Itch under any channel
+This is intended for power users of this plugin and to make deploying this plugin to Itch easier for me-[@uberfig] ;)"
+autowrap = true
+
+[node name="Login" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 1016.0
+margin_bottom = 55.0
+text = "Login to Butler"
+align = 0
+
+[node name="Logout" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 59.0
+margin_right = 1016.0
+margin_bottom = 79.0
+text = "Logout From Butler"
+align = 0
+
+[node name="User" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 83.0
+margin_right = 1016.0
+margin_bottom = 107.0
+placeholder_text = "Itch Username"
+
+[node name="Game" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 111.0
+margin_right = 1016.0
+margin_bottom = 135.0
+placeholder_text = "Itch Game"
+
+[node name="QuickSelectDir" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 139.0
+margin_right = 1016.0
+margin_bottom = 159.0
+text = "Click to select a directory"
+align = 0
+
+[node name="BuildDir" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 163.0
+margin_right = 1016.0
+margin_bottom = 187.0
+placeholder_text = "Path To Folder"
+
+[node name="ChannelsLabel" type="Label" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 191.0
+margin_right = 1016.0
+margin_bottom = 205.0
+text = "fill in what channel you would like to build to:"
+autowrap = true
+
+[node name="Channel" type="LineEdit" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 209.0
+margin_right = 1016.0
+margin_bottom = 233.0
+placeholder_text = "Channel"
+
+[node name="Async" type="CheckBox" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 237.0
+margin_right = 1016.0
+margin_bottom = 261.0
+hint_tooltip = "when in pause mode (recommended) the editor will pause it's process until butler is finished (you will not be able to interact with the editor until butler is done)"
+pressed = true
+text = "Pause Mode"
+
+[node name="SavePresets" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 265.0
+margin_right = 1016.0
+margin_bottom = 285.0
+hint_tooltip = "save currently selected presets to persistant storage"
+text = "Save Presets"
+align = 0
+
+[node name="ItchPush" type="Button" parent="TabBox/QuickDeploy/ScrollContainer/VBoxContainer"]
+margin_top = 289.0
+margin_right = 1016.0
+margin_bottom = 309.0
+text = "Push to Itch"
+align = 0
+
+[node name="FileDialog" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -491.0
+margin_bottom = -436.5
+rect_min_size = Vector2( 250, 87.5 )
+window_title = "Open a Directory"
+resizable = true
+dialog_text = "Select a Directory to Deploy From (use the same Directory you are building into)"
+mode = 2
+access = 2
+current_dir = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin"
+current_path = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin/"
+
+[node name="QuickFile" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -491.0
+margin_bottom = -436.5
+rect_min_size = Vector2( 250, 87.5 )
+window_title = "Open a Directory"
+resizable = true
+dialog_text = "Select a Directory to Deploy From (use the same Directory you are building into)"
+mode = 2
+access = 2
+current_dir = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin"
+current_path = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin/"
+
+[connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/Login" to="TabBox/Deploy" method="_on_Login_pressed"]
+[connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/Logout" to="TabBox/Deploy" method="_on_Logout_pressed"]
+[connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/SelectDir" to="." method="_on_SelectDir_pressed"]
+[connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/SavePresets" to="." method="_on_SavePresets_pressed"]
+[connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/ItchPush" to="TabBox/Deploy" method="_on_ItchPush_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Login" to="TabBox/Deploy" method="_on_Login_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Logout" to="TabBox/Deploy" method="_on_Logout_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/QuickSelectDir" to="." method="_on_QuickSelectDir_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/SavePresets" to="." method="_on_SavePresets_pressed"]
+[connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/ItchPush" to="TabBox/QuickDeploy" method="_on_ItchPush_pressed"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
+[connection signal="dir_selected" from="QuickFile" to="." method="_on_QuickFile_dir_selected"]

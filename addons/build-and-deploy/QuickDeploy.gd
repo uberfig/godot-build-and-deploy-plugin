@@ -7,12 +7,7 @@ var presets_dict: Dictionary = {
 	"directory": "",
 	"user": "",
 	"game": "",
-	"channels": {
-		"Windows": false,
-		"Linux": false,
-		"Mac": false,
-		"HTML5": false
-	},
+	"channel": "",
 	"async mode": true
 }
 
@@ -52,10 +47,7 @@ func update_presets():
 	presets_dict["directory"] = $ScrollContainer/VBoxContainer/BuildDir.text
 	presets_dict["user"] = $ScrollContainer/VBoxContainer/User.text
 	presets_dict["game"] = $ScrollContainer/VBoxContainer/Game.text
-	presets_dict["channels"]["Windows"] = $ScrollContainer/VBoxContainer/Windows.is_pressed()
-	presets_dict["channels"]["Linux"] = $ScrollContainer/VBoxContainer/Linux.is_pressed()
-	presets_dict["channels"]["Mac"] = $ScrollContainer/VBoxContainer/Mac.is_pressed()
-	presets_dict["channels"]["HTML5"] = $ScrollContainer/VBoxContainer/HTML5.is_pressed()
+	presets_dict["channel"] = $ScrollContainer/VBoxContainer/Channel.text
 	presets_dict["async mode"] = $ScrollContainer/VBoxContainer/Async.is_pressed()
 	print("presets updated with: ", presets_dict)
 
@@ -64,39 +56,13 @@ func _on_ItchPush_pressed():
 	update_presets()
 	print("started deploy with presets: ", presets_dict)
 	
-	if presets_dict["channels"]["Windows"] == true:
-		butler_push(
-			str(presets_dict["directory"], "/windows"), 
-			presets_dict["user"], 
-			presets_dict["game"], 
-			"windows",
-			presets_dict["async mode"]
-		)
+	butler_push(
+		presets_dict["directory"], 
+		presets_dict["user"], 
+		presets_dict["game"], 
+		presets_dict["channel"],
+		presets_dict["async mode"]
+	)
 	
-	if presets_dict["channels"]["Linux"] == true:
-		butler_push(
-			str(presets_dict["directory"], "/linux"), 
-			presets_dict["user"], 
-			presets_dict["game"], 
-			"linux-universal",
-			presets_dict["async mode"]
-		)
-	
-	if presets_dict["channels"]["Mac"] == true:
-		butler_push(
-			str(presets_dict["directory"], "/mac"), 
-			presets_dict["user"], 
-			presets_dict["game"], 
-			"osx-universal",
-			presets_dict["async mode"]
-		)
-	
-	if presets_dict["channels"]["HTML5"] == true:
-		butler_push(
-			str(presets_dict["directory"], "/html5"), 
-			presets_dict["user"], 
-			presets_dict["game"], 
-			"html5",
-			presets_dict["async mode"]
-		)
+	print("finished deploy")
 
