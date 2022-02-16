@@ -7,3 +7,6 @@ export_presets.cfg
 *.translation
 
 assets/asset-source/
+
+*.save
+*.import

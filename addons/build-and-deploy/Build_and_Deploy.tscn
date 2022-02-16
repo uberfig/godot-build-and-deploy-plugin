@@ -400,6 +400,42 @@ margin_bottom = 309.0
 text = "Push to Itch"
 align = 0
 
+[node name="Settings" type="Control" parent="TabBox"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -980.0
+margin_bottom = -528.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabBox/Settings"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabBox/Settings/ScrollContainer"]
+margin_right = 174.0
+margin_bottom = 309.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Butler off path" type="Label" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
+margin_right = 1016.0
+margin_bottom = 31.0
+autowrap = true
+
+[node name="offPathToggle" type="CheckButton" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
+margin_right = 76.0
+margin_bottom = 40.0
+text = "Use Butler Off Path"
+
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -413,8 +449,8 @@ resizable = true
 dialog_text = "Select a Directory to Deploy From (use the same Directory you are building into)"
 mode = 2
 access = 2
-current_dir = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin"
-current_path = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin/"
+current_dir = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D/godot-build-and-deploy-plugin"
+current_path = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D/godot-build-and-deploy-plugin/"
 
 [node name="QuickFile" type="FileDialog" parent="."]
 anchor_right = 1.0
@@ -429,8 +465,24 @@ resizable = true
 dialog_text = "Select a Directory to Deploy From (use the same Directory you are building into)"
 mode = 2
 access = 2
-current_dir = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin"
-current_path = "/Users/aidan/Documents/figroot studios/B and D/latest/godot-build-and-deploy-plugin/"
+current_dir = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D/godot-build-and-deploy-plugin"
+current_path = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D/godot-build-and-deploy-plugin/"
+
+[node name="ButlerPath" type="FileDialog" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -491.0
+margin_bottom = -436.5
+rect_min_size = Vector2( 250, 87.5 )
+window_title = "Select Butler"
+resizable = true
+dialog_text = "Select your Butler Executable"
+mode = 0
+access = 2
+current_dir = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D/godot-build-and-deploy-plugin"
+current_path = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D/godot-build-and-deploy-plugin/"
 
 [connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/Login" to="TabBox/Deploy" method="_on_Login_pressed"]
 [connection signal="pressed" from="TabBox/Deploy/ScrollContainer/VBoxContainer/Logout" to="TabBox/Deploy" method="_on_Logout_pressed"]
