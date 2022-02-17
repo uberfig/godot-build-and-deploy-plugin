@@ -406,8 +406,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
 margin_top = 32.0
-margin_right = -980.0
-margin_bottom = -528.0
+margin_right = -4.0
+margin_bottom = -4.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="TabBox/Settings"]
 anchor_right = 1.0
@@ -418,8 +418,8 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TabBox/Settings/ScrollContainer"]
-margin_right = 174.0
-margin_bottom = 309.0
+margin_right = 1016.0
+margin_bottom = 564.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -429,12 +429,30 @@ __meta__ = {
 [node name="Butler off path" type="Label" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
 margin_right = 1016.0
 margin_bottom = 31.0
+text = "This menu will let you use Butler off path"
 autowrap = true
 
 [node name="offPathToggle" type="CheckButton" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
 margin_right = 76.0
 margin_bottom = 40.0
 text = "Use Butler Off Path"
+
+[node name="SelectPath" type="Button" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Click To Select Path"
+
+[node name="ButPath" type="LineEdit" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 58.0
+margin_bottom = 24.0
+placeholder_text = "Path To Butler Executable"
+
+[node name="SaveSett" type="Button" parent="TabBox/Settings/ScrollContainer/VBoxContainer"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Save"
 
 [node name="FileDialog" type="FileDialog" parent="."]
 anchor_right = 1.0
@@ -476,7 +494,7 @@ margin_top = 32.0
 margin_right = -491.0
 margin_bottom = -436.5
 rect_min_size = Vector2( 250, 87.5 )
-window_title = "Select Butler"
+window_title = "Open a File"
 resizable = true
 dialog_text = "Select your Butler Executable"
 mode = 0
@@ -494,5 +512,9 @@ current_path = "/Users/aidan/Documents/figroot studios/plugins and tools/B and D
 [connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/QuickSelectDir" to="." method="_on_QuickSelectDir_pressed"]
 [connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/SavePresets" to="." method="_on_SavePresets_pressed"]
 [connection signal="pressed" from="TabBox/QuickDeploy/ScrollContainer/VBoxContainer/ItchPush" to="TabBox/QuickDeploy" method="_on_ItchPush_pressed"]
+[connection signal="toggled" from="TabBox/Settings/ScrollContainer/VBoxContainer/offPathToggle" to="." method="_on_offPathToggle_toggled"]
+[connection signal="pressed" from="TabBox/Settings/ScrollContainer/VBoxContainer/SelectPath" to="." method="_on_SelectPath_pressed"]
+[connection signal="pressed" from="TabBox/Settings/ScrollContainer/VBoxContainer/SaveSett" to="." method="_on_SaveSett_pressed"]
 [connection signal="dir_selected" from="FileDialog" to="." method="_on_FileDialog_dir_selected"]
 [connection signal="dir_selected" from="QuickFile" to="." method="_on_QuickFile_dir_selected"]
+[connection signal="file_selected" from="ButlerPath" to="." method="_on_ButlerPath_file_selected"]
