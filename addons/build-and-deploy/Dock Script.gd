@@ -1,13 +1,19 @@
 tool
 extends Control
 
+var settings = {
+	"off_path": false,
+	"butler_path": "butler"
+}
+
  
 var plugin_persistant_data = "res://addons/build-and-deploy/persistant.save"
 
 
 var persistant_dict = {
 	"Deploy": {},
-	"QuickDeploy": {}
+	"QuickDeploy": {},
+	"Settings": {}
 }
 
 
@@ -33,6 +39,8 @@ func save_build_presets():
 	print("saving deploy presets with: ", $TabBox/Deploy.presets_dict)
 	persistant_dict["Deploy"] = $TabBox/Deploy.presets_dict
 	persistant_dict["QuickDeploy"] = $TabBox/QuickDeploy.presets_dict
+	persistant_dict["Settings"] = settings
+	print("settings:", settings)
 #	persistant_dict["Build"] = $Build.build_presets
 	var file = File.new()
 	file.open(plugin_persistant_data, File.WRITE)
@@ -48,10 +56,12 @@ func load_build_presets():
 #		$Build.build_presets = persistant_dict["Build"]
 		$TabBox/Deploy.presets_dict = persistant_dict["Deploy"]
 		$TabBox/QuickDeploy.presets_dict = persistant_dict["QuickDeploy"]
+		if persistant_dict.has("Settings"):
+			settings = persistant_dict["Settings"]
 		file.close()
 		update_ui()
 	else:
-#		persistant_dict["Build"] = $Build.build_presets
+		persistant_dict["Settings"] = settings
 		persistant_dict["Deploy"] = $TabBox/Deploy.presets_dict
 		persistant_dict["QuickDeploy"] = $TabBox/QuickDeploy.presets_dict
 		file.open(plugin_persistant_data, File.WRITE)
@@ -79,6 +89,10 @@ func update_ui():
 	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Channel.text = Quickdeploy_presets["channel"]
 	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/Async.set_pressed(Quickdeploy_presets["async mode"])
 	
+	show_hide_butler(settings["off_path"])
+	$TabBox/Settings/ScrollContainer/VBoxContainer/ButPath.text = settings["butler_path"]
+	$TabBox/Settings/ScrollContainer/VBoxContainer/offPathToggle.set_pressed(settings["off_path"])
+
 #	var Build_presets = $Build.build_presets
 #	print("updating ui with: ", Build_presets)
 #	$Build/VBoxContainer/Game.text = Build_presets["game"]
@@ -116,4 +130,33 @@ func _on_QuickFile_dir_selected(dir):
 	$TabBox/QuickDeploy/ScrollContainer/VBoxContainer/BuildDir.text = dir
 
 
+func _on_offPathToggle_toggled(button_pressed):
+	settings["off_path"] = button_pressed
+	show_hide_butler(button_pressed)
 
+
+
+func show_hide_butler(toggle):
+	if toggle:
+		$TabBox/Settings/ScrollContainer/VBoxContainer/SelectPath.show()
+		$TabBox/Settings/ScrollContainer/VBoxContainer/ButPath.show()
+	else:
+		$TabBox/Settings/ScrollContainer/VBoxContainer/SelectPath.hide()
+		$TabBox/Settings/ScrollContainer/VBoxContainer/ButPath.hide()
+
+
+func _on_SelectPath_pressed():
+	$ButlerPath.popup()
+
+
+func _on_ButlerPath_file_selected(path):
+	settings["butler_path"] = path
+	$TabBox/Settings/ScrollContainer/VBoxContainer/ButPath.text = settings["butler_path"]
+
+
+func _on_SaveSett_pressed():
+	settings["off_path"] = $TabBox/Settings/ScrollContainer/VBoxContainer/offPathToggle.is_pressed()
+	settings["butler_path"] = $TabBox/Settings/ScrollContainer/VBoxContainer/ButPath.text
+	$TabBox/Deploy.butler_path = settings["butler_path"]
+	$TabBox/QuickDeploy.butler_path = settings["butler_path"]
+	save_build_presets()

@@ -1,6 +1,8 @@
 tool
 extends Control
 
+var butler_path = "butler"
+
 
 var presets_dict: Dictionary = {
 	"is logged in": false,
@@ -16,14 +18,14 @@ func butler_login(async_mode:= false):
 	var output = []
 	var array = ["login"]
 	var args = PoolStringArray(array)
-	OS.execute("butler", args, async_mode, output)
+	OS.execute(butler_path, args, async_mode, output)
 
 
 func butler_logout(async_mode:= false):
 	var output = []
 	var array = ["logout"]
 	var args = PoolStringArray(array)
-	OS.execute("butler", args, async_mode, output)
+	OS.execute(butler_path, args, async_mode, output)
 
 
 func butler_push(directory: String, user: String, game: String, channel: String, async_mode:= false):
@@ -32,7 +34,7 @@ func butler_push(directory: String, user: String, game: String, channel: String,
 	var output = []
 	var array = ["push", str(directory), str(user, "/", game, ":", channel)]
 	var args = PoolStringArray(array)
-	OS.execute("butler", args, async_mode, output)
+	OS.execute(butler_path, args, async_mode, output)
 
 
 func _on_Login_pressed():
