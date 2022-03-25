@@ -6,12 +6,8 @@ the build portion of the plugin is redundant as it does the same thing as the ex
 
 ### setup
 
-this plugin is available on the asset library [here](https://godotengine.org/asset-library/asset/1103), if you choose to use that methood to download skip to making sure butler is installed
+this plugin is available on the asset library [here](https://godotengine.org/asset-library/asset/1103)
 
-you can download the build and deploy file on it's own from itch [here](https://figroot.itch.io/godot-build-and-deploy)
+you will need butler installed (and added to path if on windows) which you can get from itch [here](https://itchio.itch.io/butler)
 
-just place the build-and-deploy file into your addons folder and enable the plugin
-
-you will need butler installed (and added to path if on windows)
-
-once the plugin is enabled and butler is ready there is a complete guide in the about tab of the plugin which will walk you through the setup and usage of the plugin
+once the plugin is installed, enabled, and butler is ready, there is a complete guide in the about tab of the plugin which will walk you through the setup and usage of the plugin
