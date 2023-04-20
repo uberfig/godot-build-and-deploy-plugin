@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 var butler_path = "butler"
@@ -14,27 +14,31 @@ var presets_dict: Dictionary = {
 }
 
 
-func butler_login(async_mode:= false):
+func butler_login():
 	var output = []
 	var array = ["login"]
-	var args = PoolStringArray(array)
-	OS.execute(butler_path, args, async_mode, output)
+	var args = PackedStringArray(array)
+	OS.execute(butler_path, args, output)
 
 
-func butler_logout(async_mode:= false):
+func butler_logout():
 	var output = []
 	var array = ["logout"]
-	var args = PoolStringArray(array)
-	OS.execute(butler_path, args, async_mode, output)
+	var args = PackedStringArray(array)
+	OS.execute(butler_path, args, output)
 
 
 func butler_push(directory: String, user: String, game: String, channel: String, async_mode:= false):
-	 #channel is the slot the game is uploaded to, for example windows-beta
+	#channel is the slot the game is uploaded to, for example windows-beta
 	
 	var output = []
 	var array = ["push", str(directory), str(user, "/", game, ":", channel)]
-	var args = PoolStringArray(array)
-	OS.execute(butler_path, args, async_mode, output)
+	var args = PackedStringArray(array)
+	if async_mode:
+		var thread = Thread.new()		
+		thread.start(func(): OS.execute(butler_path, args, output))
+	else:
+		OS.execute(butler_path, args, output)
 
 
 func _on_Login_pressed():

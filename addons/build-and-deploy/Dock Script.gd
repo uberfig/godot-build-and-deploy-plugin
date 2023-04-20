@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 var settings = {
@@ -42,16 +42,14 @@ func save_build_presets():
 	persistant_dict["Settings"] = settings
 	print("settings:", settings)
 #	persistant_dict["Build"] = $Build.build_presets
-	var file = File.new()
-	file.open(plugin_persistant_data, File.WRITE)
+	var file = FileAccess.open(plugin_persistant_data, FileAccess.WRITE)
 	file.store_var(persistant_dict, true)
 	file.close()
 
 
 func load_build_presets():
-	var file = File.new()
-	if file.file_exists(plugin_persistant_data):
-		file.open(plugin_persistant_data, File.READ)
+	if FileAccess.file_exists(plugin_persistant_data):
+		var file = FileAccess.open(plugin_persistant_data, FileAccess.READ)
 		persistant_dict = Dictionary(file.get_var())
 #		$Build.build_presets = persistant_dict["Build"]
 		$TabBox/Deploy.presets_dict = persistant_dict["Deploy"]
@@ -64,7 +62,7 @@ func load_build_presets():
 		persistant_dict["Settings"] = settings
 		persistant_dict["Deploy"] = $TabBox/Deploy.presets_dict
 		persistant_dict["QuickDeploy"] = $TabBox/QuickDeploy.presets_dict
-		file.open(plugin_persistant_data, File.WRITE)
+		var file = FileAccess.open(plugin_persistant_data, FileAccess.WRITE)
 		file.store_var(persistant_dict, true)
 		file.close()
 

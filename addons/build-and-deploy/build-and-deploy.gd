@@ -1,4 +1,4 @@
-tool
+@tool
 extends EditorPlugin
 
 
@@ -9,7 +9,7 @@ var dock
 func _enter_tree():
 	# Initialization of the plugin goes here.
 	# Load the dock scene and instance it.
-	dock = preload("res://addons/build-and-deploy/Build_and_Deploy.tscn").instance()
+	dock = preload("res://addons/build-and-deploy/Build_and_Deploy.tscn").instantiate()
 
 	# Add the loaded scene to the docks.
 	add_control_to_dock(DOCK_SLOT_RIGHT_UL, dock)
