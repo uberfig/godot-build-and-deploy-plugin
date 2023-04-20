@@ -1,4 +1,4 @@
-tool
+@tool
 extends Control
 
 
@@ -45,9 +45,12 @@ func update_presets():
 func build_prject(game: String, channel: String, async_mode:= false):
 	var output = []
 	var array = ["--export", str(channel), str(game)]
-	var args = PoolStringArray(array)
-	OS.execute(OS.get_executable_path(), args, async_mode, output)
-
+	var args = PackedStringArray(array)
+	if async_mode:
+		var thread = Thread.new()		
+		thread.start(func(): OS.execute(OS.get_executable_path(), args, output))
+	else:
+		OS.execute(OS.get_executable_path(), args, output)	
 
 
 func _on_Build_pressed():
